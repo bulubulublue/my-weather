@@ -1,0 +1,33 @@
+.weather_container{
+  font-size: 16px;
+  line-height: 22px;
+
+  .today_temp{
+    font-size: 72px;
+    line-height: 72px;
+    font-weight: 600;
+    color: #6C40B5;
+  }
+
+  .high_low_temp{
+    span:first-child {
+      margin-right: 5px;
+    }
+  }
+
+  .other_info {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    
+    span {
+      &:first-child {
+        font-weight: 700;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}
