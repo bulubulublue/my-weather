@@ -7,7 +7,7 @@ const SearchHistory = () => {
     {
       country: 'Japan',
       city: 'Johor',
-      date: '988775544',
+      date: 988775544,
     },
   ];
 

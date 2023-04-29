@@ -1,0 +1,24 @@
+.item_wrapper {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 18px;
+  border-radius: 16px;
+  padding: 13px;
+
+  .item_left {
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+  }
+
+  .item_right{
+    font-size: 14px;
+    line-height: 19px;
+  }
+}
+
+.mr_10 {
+  margin-right: 10px;
+}
