@@ -7,6 +7,7 @@ import './iconButton.scss';
 const IconButton = (props: IIconButtonProps) => {
   const { type = 'primary', loading = false, shape = 'default', size = 'medium', disabled = false, icon, children, className } = props;
 
+  // click button callback
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (!disabled) {
       const { onClick } = props;

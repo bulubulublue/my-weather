@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { BaseResponse } from '../interfaces/common';
 
 axios.defaults.responseType = 'json';
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
@@ -7,7 +6,7 @@ axios.defaults.headers.put['Content-Type'] = 'application/json;charset=UTF-8';
 
 axios.interceptors.response.use(
   response => {
-    const { data } = response as AxiosResponse<BaseResponse>;
+    const { data } = response as AxiosResponse;
     const { status } = data;
     if (status && status !== 'OK') {
       return Promise.reject('Network Error');

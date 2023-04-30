@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 interface IState<T> {
   error: Error | null;
@@ -19,6 +19,7 @@ export const useAsync = <T>(api: (...arg: any) => Promise<T>) => {
 
   const data = useRef<T | null>(null);
 
+  // successful calls
   const setData = (data: T) =>
     setState({
       data,
@@ -26,6 +27,7 @@ export const useAsync = <T>(api: (...arg: any) => Promise<T>) => {
       error: null,
     });
 
+  // failed calls
   const setError = (error: Error) =>
     setState({
       data: null,
@@ -35,6 +37,7 @@ export const useAsync = <T>(api: (...arg: any) => Promise<T>) => {
 
   const run = async (...arg: any) => {
     try {
+      // set loading to true
       setState({ ...state, status: 'loading' });
       if (arg?.length > 0) {
         const res = await api(...arg);

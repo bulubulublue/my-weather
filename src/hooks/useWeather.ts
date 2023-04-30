@@ -17,18 +17,22 @@ export const useWeather = (country: string, city: string) => {
   }, [isGeoLoading, isWeatherLoading]);
 
   const getWeatherData = async (time: number) => {
+    // if country or city is empty, or country not find in country list, toast error
     if (!country.trim() || !city.trim()) {
-      return Promise.reject('Please input valid country and city');
+      return Promise.reject('Please input valid country or city');
     }
 
+    // retrieve geographical coordinates
     const geoData = (await runGetGeoInfo({ q: `${city},${country}` })) || [];
     if (!geoData || !geoData.length) {
       return Promise.reject('Location not found');
     }
 
     const { lat, lon } = geoData[0];
+    // retrieve weather data
     const weatherData = await runGetWeatherInfo({ lat, lon });
 
+    // formate response
     const transformedWeatherData = {
       country,
       city,

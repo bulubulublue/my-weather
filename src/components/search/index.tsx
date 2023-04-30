@@ -17,10 +17,12 @@ const Search = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const { loading, getWeatherData } = useWeather(findCountryCode(country), city);
 
+  // input-country change callback event
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.target.value);
   };
 
+  // input-city change callback event
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
   };
@@ -29,6 +31,7 @@ const Search = () => {
     const time = Date.now();
 
     try {
+      // get weather data and save the search action to store
       await getWeatherData(time);
       dispatch(addSearchHistory({ city, country, time }));
       setCountry('');

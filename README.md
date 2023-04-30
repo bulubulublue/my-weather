@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+## project setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+eslint + prettier + husky + commitlint
 
-## Available Scripts
+## tech stack
 
-In the project directory, you can run:
+react + redux + axios + typescript
 
-### `npm start`
+## function description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+search module:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. user needs to input country and city to do a valid search
+2. validation:
 
-### `npm test`
+- if country or city is empty, will toast an error message
+- country should be in the list of ISO 3166 country codes(src/config/countryCOdes)
+- if geographical coordinates not found, will toast an error message
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. click search:
 
-### `npm run build`
+- make apis calls to get weather info
+- a record will be added to search history
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+today's weather module:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. display weather inf, including:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- current temperature
+- highest temperature
+- lowest temperature
+- country(displayed as ISO 3166 country codes)&city
+- search time
+- humidity
+- weather
 
-### `npm run eject`
+search history module:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. if no search records: display default no record UI
+2. max 10 search records will be displayed
+3. delete of a record
+4. research of a record:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- call apis to get the weather data
+- the date of the record will be updated to the latest date
+- the record will move to the top of the records
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## tech specs
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+redux:
 
-## Learn More
+1. implemented with redux toolkit
+2. weather modules stores:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- search result
+- search history list
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+axios:
+
+1. add request and response interceptors
+2. excapuslate axios method
+3. create useAsync hook to manage request data and loading status
+4. create useWeather hook to make api calls
+
+## files description
+
+├─ src
+├─ apis // defined http methods
+├─ assets  
+ ├─ images // image resource
+├─ styles // common styles
+├─ components
+├─ iconButton // icon button component
+├─ search // search module
+├─ searchHistory // search history wrapper
+├─ searchHistoryItem // each search history record
+├─ weather // today's weather module
+├─ config
+├─ apis // api addresses
+├─ countryCode // ISO 3166 country codes list
+├─ hooks
+├─ useAsync // encapsulate of http request
+├─ useWeather // manage query weather related api calls
+├─ interfaces // definition of data types
+├─ store  
+ ├─ index // create store
+├─ weather // maintain weather related data
+├─ utils
+├─ http // config and encapsulate axios method
+├─ tools // common functions

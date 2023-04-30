@@ -15,6 +15,13 @@ export function formatLocalTime(time: number | string, format = 'YYYY-MM-DD HH:m
   return `${dayjs.utc(Number(time)).local().format(format)}`;
 }
 
+/**
+ *
+ * find country code
+ *
+ * @param {string} name country name
+ * @return {string} country code
+ */
 export function findCountryCode(name: string) {
   for (const key of Object.keys(countryCodes)) {
     const obj = countryCodes[key as keyof typeof countryCodes];

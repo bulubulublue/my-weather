@@ -1,19 +1,23 @@
+// common query params
 export interface IQueryParams {
   q: string;
 }
 
+// reponse-geo info
 export interface IGeoInfo {
   name: string;
   lat: number;
   lon: number;
 }
 
+// weather info query params
 export interface IWeatherQueryParams {
   lat: number;
   lon: number;
   exclude?: string;
 }
 
+// weather info displayed on page
 export interface IWeatherInfo extends ISearchHistory {
   currentTemp: number;
   minTemp: number;
@@ -37,6 +41,7 @@ export interface IWeatherResponse {
   }[];
 }
 
+// search history record info
 export interface ISearchHistory {
   city: string;
   country: string;
