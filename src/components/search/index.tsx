@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IconButton from '../iconButton/index';
 import { SearchOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { addSearchHistory } from '../../store/weather';
+import { addSearchHistory, updateCurrentWeather } from '../../store/weather';
 import styles from './search.module.scss';
 import { message } from 'antd';
+import { getGeoInfo, getWeatherInfo } from '../../apis';
+import { useAsync } from '../../hooks/useAsync';
 
-interface IProps {
-  onClick: React.MouseEventHandler<HTMLAnchorElement>;
-}
-
-const Search = ({ onClick }: IProps) => {
+const Search = () => {
   const dispatch = useDispatch();
 
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [messageApi, contextHolder] = message.useMessage();
+
+  const { isLoading: isGeoLoading, run: runGetGeoInfo } = useAsync(getGeoInfo);
+  const { isLoading: isWeatherLoading, run: runGetWeatherInfo } = useAsync(getWeatherInfo);
+
+  useEffect(() => {
+    setLoading(isGeoLoading || isWeatherLoading);
+  }, [isGeoLoading, isWeatherLoading]);
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.target.value);
@@ -26,7 +32,7 @@ const Search = ({ onClick }: IProps) => {
     setCity(e.target.value);
   };
 
-  const handleSearch = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
+  const handleSearch = async () => {
     if (!country || !city) {
       messageApi.open({
         type: 'error',
@@ -36,10 +42,33 @@ const Search = ({ onClick }: IProps) => {
       return;
     }
 
-    dispatch(addSearchHistory({ city, country, time: Date.now() }));
-    // const res = useSelector((state:any) => state.weather);
-    // console.log(res);
-    (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
+    const geoData = await runGetGeoInfo({ q: `${city},${country}` });
+    if (!geoData || !geoData.length) {
+      messageApi.open({
+        type: 'error',
+        content: 'Get Geo info error',
+      });
+
+      return;
+    }
+
+    const { lat, lon } = geoData[0];
+    const weatherData = await runGetWeatherInfo({ lat, lon });
+
+    const time = Date.now();
+    const transformedWeatherData = {
+      country,
+      city,
+      time,
+      currentTemp: weatherData?.current.temp,
+      minTemp: weatherData?.daily[0].temp.min,
+      maxTemp: weatherData?.daily[0].temp.max,
+      humidity: weatherData?.current.humidity,
+      weather: weatherData?.current.weather[0].main,
+    };
+
+    dispatch(updateCurrentWeather(transformedWeatherData));
+    dispatch(addSearchHistory({ city, country, time }));
 
     setCountry('');
     setCity('');
@@ -57,7 +86,7 @@ const Search = ({ onClick }: IProps) => {
           <label className={styles.label}>City</label>
           <input className={styles.input_field} type="text" value={city} onChange={handleCityChange}></input>
         </div>
-        <IconButton onClick={handleSearch}>
+        <IconButton onClick={handleSearch} loading={loading}>
           <SearchOutlined />
         </IconButton>
       </div>

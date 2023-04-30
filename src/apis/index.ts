@@ -4,7 +4,7 @@ import { IQueryParams, IGeoInfo, IWeatherQueryParams, IWeatherResponse } from '.
 
 export const getGeoInfo = (params: Omit<IQueryParams, 'appid'>) => {
   const mergedParams = { ...params, appid: API_KEY };
-  return request<IGeoInfo>({
+  return request<IGeoInfo[]>({
     url: GET_GEO_INFO,
     method: 'get',
     params: mergedParams,
@@ -12,7 +12,7 @@ export const getGeoInfo = (params: Omit<IQueryParams, 'appid'>) => {
 };
 
 export const getWeatherInfo = (params: IWeatherQueryParams) => {
-  const mergedParams = { appid: API_KEY, exclude: 'minutely,hourly,alerts', ...params };
+  const mergedParams = { appid: API_KEY, exclude: 'minutely,hourly,alerts', units: 'metric', ...params };
   return request<IWeatherResponse>({
     url: GET_WEATHER_INFO,
     method: 'get',

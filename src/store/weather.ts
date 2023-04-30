@@ -24,8 +24,11 @@ const weatherSlice = createSlice({
         !(record.city === city && record.country === country && record.time === time);
       });
     },
+    updateCurrentWeather(state, action) {
+      state.currentWeather = action.payload;
+    },
   },
 });
 
-export const { addSearchHistory, deleteSearchHistory } = weatherSlice.actions;
+export const { addSearchHistory, deleteSearchHistory, updateCurrentWeather } = weatherSlice.actions;
 export const { reducer: weatherReducer } = weatherSlice;

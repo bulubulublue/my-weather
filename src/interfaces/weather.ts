@@ -14,10 +14,10 @@ export interface IWeatherQueryParams {
   exclude?: string;
 }
 
-export interface IWeatherInfo {
-  day: number;
-  min: number;
-  max: number;
+export interface IWeatherInfo extends ISearchHistory {
+  currentTemp: number;
+  minTemp: number;
+  maxTemp: number;
   humidity: number;
   weather: string;
 }
