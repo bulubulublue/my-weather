@@ -10,14 +10,13 @@
     border: none;
     cursor: pointer;
 
-    &_sm{
+    &.icon_button_sm{
       height: 34px;
       width: 34px;
       padding: 9px;
 
       >span {
-        transform: scale(1.15);
-        
+        transform: scale(1.3);
       }
     }
 
@@ -33,7 +32,6 @@
     &.is_light{
       background-color: #fff;
       >span {
-        transform: scale(1.15);
         color:#666;
       }
     }
