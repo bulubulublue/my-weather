@@ -3,6 +3,7 @@ import styles from './searchHistory.module.scss';
 import SearchHistoryItem from '../searchHistoryItem';
 import { useSelector } from 'react-redux';
 import { ISearchHistory } from '../../interfaces/weather';
+import { Empty } from 'antd';
 
 const SearchHistory = () => {
   const { searchHistory } = useSelector((state: any) => state.weather);
@@ -10,9 +11,11 @@ const SearchHistory = () => {
   return (
     <div className={styles.history_wrapper}>
       <div className={styles.title}>Search History</div>
-      {searchHistory.map((record: ISearchHistory) => (
-        <SearchHistoryItem key={record.country + record.city + record.time} {...record} />
-      ))}
+      {searchHistory.length ? (
+        searchHistory.map((record: ISearchHistory) => <SearchHistoryItem key={record.country + record.city + record.time} {...record} />)
+      ) : (
+        <Empty />
+      )}
     </div>
   );
 };

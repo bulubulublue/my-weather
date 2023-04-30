@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { deleteSearchHistory, updateSearchHistory } from '../../store/weather';
 import { useWeather } from '../../hooks/useWeather';
 import { message } from 'antd';
+import { findCountryCode } from '../../utils/tools';
 
 interface ISearchHistoryItemProps {
   country: string;
@@ -19,7 +20,7 @@ const SearchHistoryItem = (props: ISearchHistoryItemProps) => {
 
   const { city, country, time } = props;
 
-  const { loading, getWeatherData } = useWeather(country, city);
+  const { loading, getWeatherData } = useWeather(findCountryCode(country), city);
   const [messageApi, contextHolder] = message.useMessage();
 
   const formattedDate = formatLocalTime(time);
@@ -48,7 +49,7 @@ const SearchHistoryItem = (props: ISearchHistoryItemProps) => {
       <div className={styles.item_wrapper}>
         <div className={styles.item_left}>
           <span>
-            {city},{country}
+            {city},{findCountryCode(country)}
           </span>
         </div>
         <div className={styles.item_right}>
