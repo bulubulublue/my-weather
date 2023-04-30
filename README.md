@@ -47,6 +47,8 @@ search history module:
 
 theme change is also added to the project
 
+test data: Country: china, City: shanghai ; Country: singapore, City: singapore ...
+
 ## tech specs
 
 redux:
@@ -67,26 +69,26 @@ axios:
 ## files description
 
 ├─ src
-├─ apis // defined http methods
-├─ assets  
- ├─ images // image resource
-├─ styles // common styles
-├─ components
-├─ iconButton // icon button component
-├─ search // search module
-├─ searchHistory // search history wrapper
-├─ searchHistoryItem // each search history record
-├─ weather // today's weather module
-├─ config
-├─ apis // api addresses
-├─ countryCode // ISO 3166 country codes list
-├─ hooks
-├─ useAsync // encapsulate of http request
-├─ useWeather // manage query weather related api calls
-├─ interfaces // definition of data types
-├─ store  
- ├─ index // create store
-├─ weather // maintain weather related data
-├─ utils
-├─ http // config and encapsulate axios method
-├─ tools // common functions
+    ├─ apis        // defined http methods
+    ├─ assets  
+         ├─ images // image resource
+         ├─ styles // common styles
+    ├─ components
+        ├─ iconButton // icon button component
+        ├─ search // search module
+        ├─ searchHistory // search history wrapper
+        ├─ searchHistoryItem // each search history record
+        ├─ weather // today's weather module
+    ├─ config
+        ├─ apis // api addresses
+        ├─ countryCode // ISO 3166 country codes list
+    ├─ hooks
+        ├─ useAsync // encapsulate of http request
+        ├─ useWeather // manage query weather related api calls
+    ├─ interfaces // definition of data types
+    ├─ store  
+         ├─ index // create store
+         ├─ weather // maintain weather related data
+    ├─ utils
+         ├─ http // config and encapsulate axios method
+         ├─ tools // common functions
