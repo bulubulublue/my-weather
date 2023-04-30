@@ -51,15 +51,19 @@ const SearchHistoryItem = (props: ISearchHistoryItemProps) => {
           <span>
             {city},{findCountryCode(country)}
           </span>
+          <span className={styles.mr_10}>{formattedDate}</span>
         </div>
         <div className={styles.item_right}>
-          <span className={styles.mr_10}>{formattedDate}</span>
-          <IconButton onClick={handleSearch} shape="circle" size="small" type="light" loading={loading}>
-            <SearchOutlined />
-          </IconButton>
-          <IconButton onClick={handleDelete} shape="circle" size="small" type="light">
-            <DeleteOutlined />
-          </IconButton>
+          <IconButton
+            onClick={handleSearch}
+            icon={<SearchOutlined />}
+            className={styles.mr_10}
+            shape="circle"
+            size="small"
+            type="light"
+            loading={loading}
+          />
+          <IconButton onClick={handleDelete} icon={<DeleteOutlined />} shape="circle" size="small" type="light" />
         </div>
       </div>
     </>

@@ -11,12 +11,17 @@
     line-height: 22px;
     display: flex;
     align-items: center;
+    flex: 1;
+    justify-content: space-between;
   }
 
   .item_right{
     font-size: 14px;
     line-height: 19px;
+    display: flex;
   }
+
+  
 }
 
 .mr_10 {

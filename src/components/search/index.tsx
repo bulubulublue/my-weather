@@ -53,9 +53,7 @@ const Search = () => {
           <label className={styles.label}>City</label>
           <input className={styles.input_field} type="text" value={city} onChange={handleCityChange}></input>
         </div>
-        <IconButton onClick={handleSearch} loading={loading}>
-          <SearchOutlined />
-        </IconButton>
+        <IconButton onClick={handleSearch} loading={loading} icon={<SearchOutlined />} />
       </div>
     </>
   );

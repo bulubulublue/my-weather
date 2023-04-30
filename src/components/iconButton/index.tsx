@@ -5,18 +5,20 @@ import classNames from 'classnames';
 import './iconButton.scss';
 
 const IconButton = (props: IIconButtonProps) => {
-  const { type = 'primary', loading = false, shape = 'default', size = 'medium', disabled = false, children, icon } = props;
+  const { type = 'primary', loading = false, shape = 'default', size = 'medium', disabled = false, icon, children, className } = props;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const { onClick } = props;
-    if (loading) {
-      e.preventDefault();
-      return;
+    if (!disabled) {
+      const { onClick } = props;
+      if (loading) {
+        e.preventDefault();
+        return;
+      }
+      (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
     }
-    (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
   };
 
-  const iconNode = loading ? <LoadingOutlined /> : icon;
+  const iconNode = loading ? <LoadingOutlined className="icon" /> : icon;
 
   const kids = children || children === 0 ? children : null;
 
@@ -26,16 +28,17 @@ const IconButton = (props: IIconButtonProps) => {
     { is_disabled: disabled },
     { icon_button_md: size === 'medium' },
     { icon_button_sm: size === 'small' },
-    { is_circle: shape === 'circle' }
+    { is_circle: shape === 'circle' },
+    className
   );
 
   return (
-    // <div className='icon_button_wrapper'>
-    <button onClick={handleClick} disabled={disabled} className={derivedClassNames}>
-      {iconNode}
-      {kids}
-    </button>
-    // </div>
+    <div className="button_wrapper">
+      <button onClick={handleClick} disabled={disabled} className={derivedClassNames}>
+        {iconNode}
+        {kids}
+      </button>
+    </div>
   );
 };
 
