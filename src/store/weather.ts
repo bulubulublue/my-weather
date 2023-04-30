@@ -20,20 +20,16 @@ const weatherSlice = createSlice({
   reducers: {
     addSearchHistory(state, action) {
       state.searchHistory = [action.payload, ...state.searchHistory];
+      console.log(state.searchHistory);
     },
     deleteSearchHistory(state, action) {
       const { city, country, time } = action.payload;
-      state.searchHistory = state.searchHistory.filter(record => {
-        !(record.city === city && record.country === country && record.time === time);
-      });
+      state.searchHistory = state.searchHistory.filter(record => !(record.city === city && record.country === country && record.time === time));
     },
     updateSearchHistory(state, action) {
       const { city, country, oldTime, newTime } = action.payload;
 
-      state.searchHistory = state.searchHistory.filter(record => {
-        !(record.city === city && record.country === country && record.time === oldTime);
-      });
-
+      state.searchHistory = state.searchHistory.filter(record => !(record.city === city && record.country === country && record.time === oldTime));
       state.searchHistory = [{ city, country, time: newTime }, ...state.searchHistory];
     },
     updateCurrentWeather(state, action) {
