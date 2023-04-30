@@ -18,12 +18,12 @@ export const useWeather = (country: string, city: string) => {
 
   const getWeatherData = async (time: number) => {
     if (!country.trim() || !city.trim()) {
-      return Promise.reject('Please input country and city');
+      return Promise.reject('Please input valid country and city');
     }
 
     const geoData = (await runGetGeoInfo({ q: `${city},${country}` })) || [];
     if (!geoData || !geoData.length) {
-      return Promise.reject('Get Geo info error');
+      return Promise.reject('Location not found');
     }
 
     const { lat, lon } = geoData[0];

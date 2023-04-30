@@ -6,6 +6,7 @@ import { addSearchHistory } from '../../store/weather';
 import styles from './search.module.scss';
 import { message } from 'antd';
 import { useWeather } from '../../hooks/useWeather';
+import { findCountryCode } from '../../utils/tools';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Search = () => {
   const [city, setCity] = useState('');
 
   const [messageApi, contextHolder] = message.useMessage();
-  const { loading, getWeatherData } = useWeather(country, city);
+  const { loading, getWeatherData } = useWeather(findCountryCode(country), city);
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.target.value);
@@ -30,15 +31,14 @@ const Search = () => {
     try {
       await getWeatherData(time);
       dispatch(addSearchHistory({ city, country, time }));
+      setCountry('');
+      setCity('');
     } catch (error) {
       messageApi.open({
         type: 'error',
         content: error as string,
       });
     }
-
-    setCountry('');
-    setCity('');
   };
 
   return (
