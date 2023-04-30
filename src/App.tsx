@@ -23,10 +23,10 @@ function App() {
   const { isLoading, run: runGetWeatherInfo } = useAsync(getGeoInfo);
 
   const handleSearch = async () => {
-    const geoData = await runGetGeoInfo({ q: 'London' });
-    const weatherData = await getWeatherInfo({ lat: 39.31, lon: -74.5 });
+    // const geoData = await runGetGeoInfo({ q: 'London' });
+    // const weatherData = await getWeatherInfo({ lat: 39.31, lon: -74.5 });
     // const countryCode = await runGetCountryCode({q:'China'})
-    console.log(geoData, weatherData);
+    // console.log(geoData, weatherData);
   };
 
   return (

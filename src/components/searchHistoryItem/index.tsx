@@ -3,23 +3,27 @@ import styles from './searchHistoryItem.module.scss';
 import { formatLocalTime } from '../../utils/tools';
 import IconButton from '../iconButton';
 import { SearchOutlined, DeleteOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { deleteSearchHistory } from '../../store/weather';
 
 interface ISearchHistoryItemProps {
   country: string;
   city: string;
-  date: number;
+  time: number;
 }
 
 const SearchHistoryItem = (props: ISearchHistoryItemProps) => {
-  const { city, country, date } = props;
-  const formattedDate = formatLocalTime(date);
+  const dispatch = useDispatch();
+
+  const { city, country, time } = props;
+  const formattedDate = formatLocalTime(time);
 
   const handleSearch = () => {
     console.log('search');
   };
 
   const handleDelete = () => {
-    console.log('delete');
+    dispatch(deleteSearchHistory(props));
   };
 
   return (
