@@ -11,7 +11,7 @@ const SearchHistory = () => {
     <div className={styles.history_wrapper}>
       <div className={styles.title}>Search History</div>
       {searchHistory.map((record: ISearchHistory) => (
-        <SearchHistoryItem key={record.country + record.city} {...record} />
+        <SearchHistoryItem key={record.country + record.city + record.time} {...record} />
       ))}
     </div>
   );
