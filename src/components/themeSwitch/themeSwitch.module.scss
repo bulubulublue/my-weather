@@ -1,0 +1,13 @@
+.overlay{
+:global{
+    .ant-dropdown-menu{
+      background-color: var(--color-dropdown-bg);
+      
+    }
+
+    .ant-dropdown-menu-title-content{
+      color:var(--color-text-info)
+    }
+  }
+ 
+}

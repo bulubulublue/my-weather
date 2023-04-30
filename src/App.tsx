@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './components/search';
 import Weather from './components/weather';
 import SearchHistory from './components/searchHistory';
+import ThemeSwitch from './components/themeSwitch';
 import './App.scss';
 import { useSelector } from 'react-redux';
 import cloud from './assets/images/cloud.png';
@@ -17,6 +18,9 @@ function App() {
 
   return (
     <div className="content-wrapper">
+      <div className="theme-wrapper">
+        <ThemeSwitch />
+      </div>
       <Search />
       <main className="content-main">
         {weather ? (

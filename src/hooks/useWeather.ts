@@ -17,9 +17,9 @@ export const useWeather = (country: string, city: string) => {
   }, [isGeoLoading, isWeatherLoading]);
 
   const getWeatherData = async (time: number) => {
-    // if country or city is empty, or country not find in country list, toast error
+    // if country and city is empty, or country not find in country list, toast error
     if (!country.trim() || !city.trim()) {
-      return Promise.reject('Please input valid country or city');
+      return Promise.reject('Please input valid country and city');
     }
 
     // retrieve geographical coordinates

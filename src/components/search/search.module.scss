@@ -6,14 +6,14 @@
     flex: 1;
     margin-right: 20px;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--color-input-bg);
     border-radius: 20px;
     padding: 7px 22px 0 22px;
     height: 60px;
 
     .label {
       position: absolute;
-      color: rgba(0, 0, 0, 0.4);
+      color: var(--color-input-lable);
       left: 22px;
       top: 3px;
     }
@@ -26,6 +26,7 @@
       width: 100%;
       font-size: 16px;
       line-height: 22px;
+      color:var(--color-text-info);
     }
   }
 }

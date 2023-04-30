@@ -1,8 +1,15 @@
 @import './reset.scss';
-@import './variables.scss';
+@import './light.scss';
+@import './dark.scss';
 
-body {
+body.light{
   background: url(../images/bg-light.png);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+body.dark{
+  background: url(../images/bg-dark.png);
   background-size: 100% 100%;
   background-attachment: fixed;
 }

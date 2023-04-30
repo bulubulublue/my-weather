@@ -2,14 +2,19 @@
   // font-size: 16px;
   line-height: 22px;
 
+  .title {
+    color: var(--color-text-info);
+  }
+
   .today_temp {
     font-size: 72px;
     line-height: 72px;
     font-weight: 600;
-    color: #6c40b5;
+    color: var(--color-text-main);
   }
 
   .high_low_temp {
+    color: var(--color-text-info);
     span:first-child {
       margin-right: 5px;
     }
@@ -18,20 +23,19 @@
   .other_info {
     display: flex;
     justify-content: space-between;
-    color: #666;
-.other_info_right{
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
+    color: var(--color-text-sub);
 
-  span{
-    // flex: 1;
-    display: block;
-    text-align: right;
-  }
- 
-}
-    
+    .other_info_right {
+      flex: 1;
+      display: flex;
+      justify-content: space-evenly;
+
+      span {
+        // flex: 1;
+        display: block;
+        text-align: right;
+      }
+    }
   }
 }
 
@@ -44,7 +48,7 @@
       font-size: 56px;
       line-height: 56px;
     }
-    .other_info{
+    .other_info {
       position: relative;
 
       .other_info_right {
@@ -54,12 +58,12 @@
         top: -43px;
         right: 0;
         span {
-        display: block;
-        text-align: right;
+          display: block;
+          text-align: right;
         }
       }
 
-      .other_info_left{
+      .other_info_left {
         display: flex;
         align-items: flex-end;
       }
