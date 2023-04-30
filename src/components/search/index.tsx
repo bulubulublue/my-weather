@@ -44,16 +44,16 @@ const Search = () => {
   return (
     <>
       {contextHolder}
-      <div className={styles.container}>
-        <div className={styles.input_container}>
+      <div className={styles.search_wrapper}>
+        <div className={styles.input_wrapper}>
           <label className={styles.label}>Country</label>
           <input className={styles.input_field} type="text" value={country} onChange={handleCountryChange}></input>
         </div>
-        <div className={styles.input_container}>
+        <div className={styles.input_wrapper}>
           <label className={styles.label}>City</label>
           <input className={styles.input_field} type="text" value={city} onChange={handleCityChange}></input>
         </div>
-        <IconButton onClick={handleSearch} loading={loading} icon={<SearchOutlined />} />
+        <IconButton className={styles.search_icon} onClick={handleSearch} loading={loading} icon={<SearchOutlined />} />
       </div>
     </>
   );

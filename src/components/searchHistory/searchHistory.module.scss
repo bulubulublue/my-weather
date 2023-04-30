@@ -3,11 +3,19 @@
   border-radius: 24px;
   padding: 23px 26px;
   margin-top: 26px;
-  font-size: 16px;
-  line-height: 22px;
-  flex:1;
+  // font-size: 16px;
+  // line-height: 22px;
+  flex: 1;
 
   .title {
     margin-bottom: 26px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .history_wrapper {
+    border-radius: 24px;
+    padding: 20px;
+    margin-top: 20px;
   }
 }

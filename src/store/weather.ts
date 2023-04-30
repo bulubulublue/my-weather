@@ -8,6 +8,9 @@ interface IWeatherState {
 
 const initialState: IWeatherState = {
   currentWeather: null,
+  // searchHistory: Array.from({length:12}).map(() => ({ city: 'sg',
+  // country: 'sg',
+  // time: 1234567}))
   searchHistory: [],
 };
 

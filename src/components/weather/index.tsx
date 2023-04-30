@@ -19,12 +19,16 @@ const Weather = (props: IWeatherInfo) => {
             <span>L: {maxTemp}°</span>
           </div>
           <div className={styles.other_info}>
-            <span>
-              {city},{country}
-            </span>
-            <span>{formatedTime}</span>
-            <span>Humidity: {humidity}%</span>
-            <span>{weather}</span>
+            <div className={styles.other_info_left}>
+              <span>
+                {city},{country}
+              </span>
+            </div>
+            <div className={styles.other_info_right}>
+              <span>{formatedTime}</span>
+              <span>Humidity: {humidity}%</span>
+              <span>{weather}</span>
+            </div>
           </div>
         </>
       ) : (

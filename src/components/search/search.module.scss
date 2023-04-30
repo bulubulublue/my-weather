@@ -1,8 +1,8 @@
-.container {
+.search_wrapper {
   display: flex;
   justify-content: space-between;
 
-  .input_container {
+  .input_wrapper {
     flex: 1;
     margin-right: 20px;
     position: relative;
@@ -15,7 +15,7 @@
       position: absolute;
       color: rgba(0, 0, 0, 0.4);
       left: 22px;
-      top: 3px
+      top: 3px;
     }
 
     .input_field {
@@ -26,10 +26,35 @@
       width: 100%;
       font-size: 16px;
       line-height: 22px;
-      // &:-internal-autofill-selected{
-      //   background-color: transparent;
-      // }
-      
+    }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .search_wrapper {
+    .input_wrapper {
+      height: 40px;
+      padding: 7px 11px;
+      border-radius: 8px;
+      margin-right: 10px;
+
+      .label {
+        font-size: 10px;
+        left: 11px;
+      }
+
+      .input_field {
+        height: 40px;
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+
+    .search_icon{
+      height: 40px;
+      width: 40px;
+      border-radius: 8px;
+      font-size: 24px;
     }
   }
 }

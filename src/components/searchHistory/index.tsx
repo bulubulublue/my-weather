@@ -7,12 +7,15 @@ import { Empty } from 'antd';
 
 const SearchHistory = () => {
   const { searchHistory } = useSelector((state: any) => state.weather);
+  const maxCount = 10; // max histroy records displayed
 
   return (
     <div className={styles.history_wrapper}>
       <div className={styles.title}>Search History</div>
       {searchHistory.length ? (
-        searchHistory.map((record: ISearchHistory) => <SearchHistoryItem key={record.country + record.city + record.time} {...record} />)
+        searchHistory
+          .slice(0, maxCount)
+          .map((record: ISearchHistory) => <SearchHistoryItem key={record.country + record.city + record.time} {...record} />)
       ) : (
         <Empty />
       )}
