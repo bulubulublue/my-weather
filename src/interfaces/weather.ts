@@ -14,13 +14,13 @@ export interface IWeatherQueryParams {
   exclude?: string;
 }
 
-// export interface IWeatherInfo {
-//   day:number;
-//   min:number;
-//   max:number;
-//   humidity:number;
-//   weather:{main:string}[]
-// }
+export interface IWeatherInfo {
+  day: number;
+  min: number;
+  max: number;
+  humidity: number;
+  weather: string;
+}
 
 // response from API
 export interface IWeatherResponse {
@@ -35,4 +35,10 @@ export interface IWeatherResponse {
       max: number;
     };
   }[];
+}
+
+export interface ISearchHistory {
+  city: string;
+  country: string;
+  time: number;
 }
