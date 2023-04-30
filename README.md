@@ -45,6 +45,8 @@ search history module:
 - the date of the record will be updated to the latest date
 - the record will move to the top of the records
 
+theme change is also added to the project
+
 ## tech specs
 
 redux:
